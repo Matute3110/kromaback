@@ -6,9 +6,16 @@ import { DatabaseService } from './database/database.service';
 import { SchedulesModule } from './schedules/schedules.module';
 import { PaymentsModule } from './payments/payments.module';
 import { ServicesModule } from './services/services.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [UsersModule, SchedulesModule, PaymentsModule, ServicesModule],
+  imports: [
+    UsersModule,
+    SchedulesModule,
+    PaymentsModule,
+    ServicesModule,
+    AuthModule,
+  ],
   controllers: [AppController],
   providers: [AppService, DatabaseService],
 })

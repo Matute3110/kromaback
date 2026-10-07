@@ -1,11 +1,10 @@
 export class CreateUserDto {
 
-    name: string;
-    lastName: string;
-    password: string;
-    email: string;
-    role: string;
-    status: boolean;
-    dni: string;
+   nombre: string;
+  apellido: string;
+  correo: string;
+  contrasena: string;
+  telefono: string;
+  rol: string;
     
 }
