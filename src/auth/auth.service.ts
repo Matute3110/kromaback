@@ -15,19 +15,18 @@ export class AuthService {
   ) {
   }
 
-
-
-
-
-
   async login(correo: string, contrasenaPlana: string) {
     const user = await this.usersService.buscarPorCorreo(correo);
     if (user && await bcrypt.compare(contrasenaPlana, user.contrasena)) {
       const payload = { correo: user.correo, sub: user.id };
+      const { contrasena, ...datosUsuario } = user;
       return {
         access_token: this.jwtService.sign(payload),
-        usuario: {id: user.id, correo: user.correo,  rol: user.rol},
+        usuario: {datosUsuario},  
+        
       };
+    }else {
+      console.log('Contraseña almacenada en la base de datos:', user ? user.contrasena : 'Usuario no encontrado');
     }
     throw new UnauthorizedException('Credenciales inválidas');
   }
