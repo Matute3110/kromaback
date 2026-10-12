@@ -4,18 +4,11 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.enableCors(
-    {
-      origin: [
-        'http://localhost:4200',
-        'http://127.0.0.1:4200',
-      ],
-      methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
-      allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
-      credentials: true,
-      optionsSuccessStatus: 204,
-    },
-  );
+ app.enableCors({
+    origin: 'https://kroma-software-front.vercel.app', // Tu dominio exacto de Vercel
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  });
 
   await app.listen(process.env.PORT ?? 3000);
 }
