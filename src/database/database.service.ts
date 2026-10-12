@@ -11,13 +11,17 @@ export class DatabaseService {
   constructor() {
     this.connect();
   }
-  private async connect() {
+ private async connect() {
     this.connection = await mysql.createConnection({
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
-      port: parseInt(process.env.DB_PORT || '3306',),
+      host: process.env.DB_HOST as string,
+      user: process.env.DB_USER as string,
+      password: process.env.DB_PASSWORD as string,
+      database: process.env.DB_NAME as string,
+      port: parseInt(process.env.DB_PORT as string, 10),
+      ssl: {
+        minVersion: 'TLSv1.2',
+        rejectUnauthorized: true
+      }
     });
   }
 
