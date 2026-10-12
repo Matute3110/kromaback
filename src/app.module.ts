@@ -7,6 +7,8 @@ import { SchedulesModule } from './schedules/schedules.module';
 import { PaymentsModule } from './payments/payments.module';
 import { ServicesModule } from './services/services.module';
 import { AuthModule } from './auth/auth.module';
+import { EmpleadosModule } from './empleados/empleados.module';
+import { CitasModule } from './citas/citas.module';
 
 @Module({
   imports: [
@@ -15,6 +17,8 @@ import { AuthModule } from './auth/auth.module';
     PaymentsModule,
     ServicesModule,
     AuthModule,
+    EmpleadosModule,
+    CitasModule,
   ],
   controllers: [AppController],
   providers: [AppService, DatabaseService],

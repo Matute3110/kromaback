@@ -27,6 +27,8 @@ export class AuthService {
       };
     }else {
       console.log('Contraseña almacenada en la base de datos:', user ? user.contrasena : 'Usuario no encontrado');
+      console.log('Contraseña proporcionada por el usuario:', contrasenaPlana);
+      console.log('Resultado de la comparación:', user ? await bcrypt.compare(contrasenaPlana, user.contrasena) : 'Usuario no encontrado');
     }
     throw new UnauthorizedException('Credenciales inválidas');
   }
